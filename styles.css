@@ -40,7 +40,7 @@ nav ul li a {
 }
 
 #hero {
-    background: url('https://drive.google.com/exaple') no-repeat center center/cover; 
+    background: url('https://example.com/path/to/hero-bg.jpg') no-repeat center center/cover; /* Замените на ваш URL изображения */
     height: 400px;
     display: flex;
     flex-direction: column;
