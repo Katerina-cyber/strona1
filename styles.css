@@ -4,11 +4,13 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #333;
-    background-image: url('https://drive.google.com/uc?id=1GOTlkk3fcs41a0IS3776IqnVjkGWJSEO'); /* Проверьте этот URL */
+    background-color: #f0f0f0; 
+    background-image: url('https://drive.google.com/uc?id=1GOTlkk3fcs41a0IS3776IqnVjkGWJSEO');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 
 body, html {
     margin: 0;
