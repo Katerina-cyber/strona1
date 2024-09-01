@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik i specjalista ds. reklamy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">O mnie</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Grafik i specjalista ds. reklamy</h1>
+        <p>Tworzę żywe rozwiązania wizualne i skuteczne kampanie reklamowe dla Twojej firmy.</p>
+        <a href="#contact" class="btn">Skontaktuj się ze mną</a>
+    </section>
+
+</body>
+</html>
+
+    <section id="about">
+        <h2>O mnie</h2>
+        <p>Jestem grafikiem z doświadczeniem w różnych dziedzinach. Moją specjalizacją jest tworzenie materiałów promocyjnych i identyfikacji wizualnej, które pomagają firmom wyróżniać się na rynku.</p>
+    </section>
+
+    <section id="services">
+        <h2>Usługi</h2>
+        <div class="service-item">
+            <h3>Projekty graficzne</h3>
+            <p>Tworzenie logotypów, materiałów reklamowych, banerów i nie tylko.</p>
+        </div>
+        <div class="service-item">
+            <h3>Kampanie reklamowe</h3>
+            <p>Projektowanie i realizacja kampanii reklamowych w mediach społecznościowych, Google Ads i innych platformach.</p>
+        </div>
+        <div class="service-item">
+            <h3>Projektowanie stron www</h3>
+            <p>Projektowanie wizualizacji nowoczesnych, wygodnych i funkcjonalnych stron internetowych.</p>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="portfolio1.jpg" alt="Работа 1">
+            <h4>Название работы 1</h4>
+        </div>
+        <div class="portfolio-item">
+            <img src="portfolio2.jpg" alt="Работа 2">
+            <h4>Название работы 2</h4>
+        </div>
+        <div class="portfolio-item">
+            <img src="portfolio3.jpg" alt="Работа 3">
+            <h4>Название работы 3</h4>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Wysłać</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 Grafik i specjalista ds. reklamy. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>
