@@ -4,7 +4,7 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #333;
-    background-image: url('https://imgur.com/a/TI65znX'); 
+    background-image: url('https://drive.google.com/uc?id=1GOTlkk3fcs41a0IS3776IqnVjkGWJSEO'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -23,7 +23,6 @@ header {
     text-align: center;
 }
 
-
 nav ul {
     list-style: none;
     padding: 0;
@@ -40,7 +39,7 @@ nav ul li a {
 }
 
 #hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
+    background: url('https://example.com/path/to/hero-bg.jpg') no-repeat center center/cover; /* Замените на ваш URL изображения */
     color: #fff;
     height: 400px;
     display: flex;
@@ -124,4 +123,3 @@ footer {
     text-align: center;
     padding: 10px 0;
 }
-
