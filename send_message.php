@@ -6,31 +6,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $token = "7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04";
     $chat_id = "708285715";
-    $text = "Имя: $name\nEmail: $email\nСообщение: $message";
+    $text = "Imię: $name\nEmail: $email\nWiadomość: $message";
 
     $url = "https://api.telegram.org/bot$token/sendMessage";
-    $post_fields = http_build_query([
+    $post_fields = [
         'chat_id' => $chat_id,
         'text' => $text,
-    ]);
-
-    $options = [
-        'http' => [
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => $post_fields,
-        ],
     ];
 
-    $context  = stream_context_create($options);
-    $response = file_get_contents($url, false, $context);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_fields));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    if ($response === FALSE) {
-        echo "Ошибка отправки сообщения: " . error_get_last()['message'];
+    $response = curl_exec($ch);
+    if ($response === false) {
+        echo "Błąd: " . curl_error($ch);
     } else {
-        echo "Сообщение отправлено успешно! Ответ: " . $response;
+        echo "Wiadomość wysłana! Odpowiedź: " . $response;
     }
+
+    curl_close($ch);
 } else {
-    echo "Метод запроса не поддерживается.";
+    echo "Metoda żądania nie jest obsługiwana.";
 }
 ?>
