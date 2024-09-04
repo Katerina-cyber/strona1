@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $text = "Imię: $name\nEmail: $email\nWiadomość: $message";
 
-    $url = "https://api.telegram.org/7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04/sendMessage?708285715=$708285715&text=" . urlencode($text);
+    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" . urlencode($text);
 
     $response = file_get_contents($url);
 
