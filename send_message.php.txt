@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+    $name = htmlspecialchars($_POST['name']); 
+    $email = htmlspecialchars($_POST['email']); 
+    $message = htmlspecialchars($_POST['message']); 
 
     $token = "7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04";
     $chat_id = "708285715";  
@@ -14,10 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $response = file_get_contents($url);
 
-        if ($response) {
-        echo "Wiadomość wysłana";
+        if ($response === FALSE) {
+
+        echo "Błąd wysyłania: " . print_r(error_get_last(), true);
     } else {
-        echo "Błąd wysyłania";
+        echo "Wiadomość wysłana";
     }
 }
 ?>
