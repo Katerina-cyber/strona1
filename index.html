@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
     <<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -81,20 +81,21 @@
 
     <section id="contact">
         <h2>Kontakt</h2>
-        <form action="submit_form.php" method="post">
+        <form action="send_message.php" method="POST">
             <label for="name">Imię:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required><br><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required><br><br>
 
             <label for="message">Wiadomość:</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" required></textarea><br><br>
 
             <button type="submit">Wysłać</button>
         </form>
         <h2>Instagram: @slad.pl</h2>
     </section>
+
 
     <footer>
         <p>© 2024 Grafik i specjalista ds. reklamy. Wszelkie prawa zastrzeżone. Katerina Semenczuk NIP: 1133127510</p>
