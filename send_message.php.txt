@@ -1,0 +1,23 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    $token = "7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04";
+    $chat_id = "708285715";  
+
+    $text = "Imię: $name\nEmail: $email\nWiadomość: $message";
+
+    $url = "https://api.telegram.org/7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04/sendMessage?708285715=$708285715&text=" . urlencode($text);
+
+    $response = file_get_contents($url);
+
+        if ($response) {
+        echo "Wiadomość wysłana";
+    } else {
+        echo "Błąd wysyłania";
+    }
+}
+?>
