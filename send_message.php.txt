@@ -10,15 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $text = "Imię: $name\nEmail: $email\nWiadomość: $message";
 
-    $url = "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=" . urlencode($text);
+    $url = "https://api.telegram.org/bot$token/sendMessage";
 
-    $response = file_get_contents($url);
+    $data = [
+        'chat_id' => $chat_id,
+        'text' => $text
+    ];
 
-        if ($response === FALSE) {
+    // Инициализация cURL
+    $ch = curl_init($url);
+    
+    // Установка опций cURL
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    
+    // Выполнение запроса
+    $response = curl_exec($ch);
 
-        echo "Błąd wysyłania: " . print_r(error_get_last(), true);
+    // Проверка на ошибки
+    if ($response === false) {
+        echo "Błąd wysyłania: " . curl_error($ch);
     } else {
         echo "Wiadomość wysłana";
     }
+
+    // Закрытие cURL
+    curl_close($ch);
 }
 ?>
