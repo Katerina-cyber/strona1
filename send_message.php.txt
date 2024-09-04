@@ -17,26 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'text' => $text
     ];
 
-    // Инициализация cURL
     $ch = curl_init($url);
-    
-    // Установка опций cURL
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-    
-    // Выполнение запроса
-    $response = curl_exec($ch);
 
-    // Получение и вывод информации о статусе ответа и ошибки
+    $response = curl_exec($ch);
     $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
     if ($response === false) {
         echo "Błąd wysyłania: " . curl_error($ch);
     } else {
-        echo "Wiadomość wysłana. Status HTTP: " . $http_status;
+        echo "Wiadomość wysłana. Status HTTP: " . $http_status . "<br>Ответ: " . htmlspecialchars($response);
     }
 
-    // Закрытие cURL
     curl_close($ch);
 }
 ?>
