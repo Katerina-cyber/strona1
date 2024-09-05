@@ -43,9 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Ошибка при отправке
         $error_message = curl_error($ch);
+        $response_body = $response ?: 'Нет ответа от сервера.';
         echo "<script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    alert('Błąd wysyłania wiadomości: $error_message. Kod HTTP: $httpCode');
+                    alert('Błąd wysyłania wiadomości: $error_message. Код HTTP: $httpCode. Ответ от сервера: $response_body');
                 });
               </script>";
     }
