@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grafik i specjalista ds. reklamy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -26,9 +26,6 @@
         <p>Tworzę żywe rozwiązania wizualne i skuteczne kampanie reklamowe dla Twojej firmy.</p>
         <a href="#contact" class="btn">Skontaktuj się ze mną</a>
     </section>
-
-</body>
-</html>
 
     <section id="about">
         <h2>O mnie</h2>
@@ -55,33 +52,33 @@
     </section>
 
     <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="display: flex; justify-content: center;">
-            <img src="IMG_7421_1.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
-            <img src="IMG_7414_1.jpg" alt="Работа 2" style="max-width: 45%; height: auto;">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="IMG_7421_1.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="IMG_7414_1.jpg" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Zdjęcia dla social media</h4>
         </div>
-        <h4 style="text-align: center;">Zdjęcia dla social media</h4>
-    </div>
-    <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="display: flex; justify-content: center;">
-            <img src="nowa reklama mp4 5.mp4" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
-            <img src="kuba3 (3).mp4" alt="Работа 2" style="max-width: 45%; height: auto;">
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="nowa reklama mp4 5.mp4" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="kuba3 (3).mp4" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Kampanie reklamowe</h4>
         </div>
-        <h4 style="text-align: center;">Kampanie reklamowe</h4>
-    </div>
-    <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
-        <div style="display: flex; justify-content: center;">
-            <img src="bol_mozgu.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
-            <img src="cosmopolitan.JPEG" alt="Работа 2" style="max-width: 45%; height: auto;">
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="bol_mozgu.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="cosmopolitan.JPEG" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Projekty graficzne</h4>
         </div>
-        <h4 style="text-align: center;">Projekty graficzne</h4>
-    </div>
     </section>
 
     <section id="contact">
         <h2>Kontakt</h2>
-        <form action="send_message.php" method="POST">
+        <form id="contactForm">
             <label for="name">Imię:</label>
             <input type="text" id="name" name="name" required><br><br>
 
@@ -93,12 +90,22 @@
 
             <button type="submit">Wysłać</button>
         </form>
+
+        <!-- Выплывающее окно -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span id="closePopup" class="close">&times;</span>
+                <p>Dziękujemy za Twoją wiadomość!</p>
+            </div>
+        </div>
+
         <h2>Instagram: @slad.pl</h2>
     </section>
-
 
     <footer>
         <p>© 2024 Grafik i specjalista ds. reklamy. Wszelkie prawa zastrzeżone. Katerina Semenczuk NIP: 1133127510</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
