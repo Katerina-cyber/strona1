@@ -35,17 +35,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Проверка кода ответа сервера Telegram
     if ($httpCode == 200) {
         // Сообщение успешно отправлено
-        echo "<script>alert('Wiadomość wysłana pomyślnie!');</script>";
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('popup').style.display = 'flex';
+                });
+              </script>";
     } else {
         // Ошибка при отправке
         $error_message = curl_error($ch);
-        echo "<script>alert('Błąd wysyłania wiadomości: $error_message. Kod HTTP: $httpCode');</script>";
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    alert('Błąd wysyłania wiadomości: $error_message. Kod HTTP: $httpCode');
+                });
+              </script>";
     }
 
     // Закрываем соединение cURL
     curl_close($ch);
 } else {
     // Если метод запроса не POST
-    echo "<script>alert('Nieobsługiwana metoda żądania.');</script>";
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Nieobsługiwana metoda żądania.');
+            });
+          </script>";
 }
 ?>
