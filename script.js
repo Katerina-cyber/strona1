@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault(); // Предотвращаем стандартное поведение формы
 
             // Отправка формы через AJAX
-            fetch('send_form.php', {
+            fetch('send_message.php', {
                 method: 'POST',
                 body: new FormData(form),
             })
