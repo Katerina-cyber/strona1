@@ -1,14 +1,113 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <!-- ... (остальные мета-теги и стили остаются без изменений) ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grafik i specjalista ds. reklamy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        /* ... (ваши стили остаются без изменений) ... */
+        /* Стили для всплывающего окна */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .popup-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <!-- ... (весь предыдущий контент остается без изменений) ... -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">O mnie</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Grafik i specjalista ds. reklamy</h1>
+        <p>Tworzę żywe rozwiązania wizualne i skuteczne kampanie reklamowe dla Twojej firmy.</p>
+        <a href="#contact" class="btn">Skontaktuj się ze mną</a>
+    </section>
+
+    <section id="about">
+        <h2>O mnie</h2>
+        <div class="portfolio-item">
+            <img src="mylogo5_page-0001 (2).jpg" alt="Логотип" style="height: 150px; width: auto; max-width: 100%;">
+        </div>
+        <p>Jestem grafikiem z doświadczeniem w różnych dziedzinach. Moją specjalizacją jest tworzenie materiałów promocyjnych i identyfikacji wizualnej, które pomagają firmom wyróżniać się na rynku.</p>
+    </section>
+
+    <section id="services">
+        <h2>Usługi</h2>
+        <div class="service-item">
+            <h3>Projekty graficzne</h3>
+            <p>Tworzenie logotypów, materiałów reklamowych, banerów i nie tylko.</p>
+        </div>
+        <div class="service-item">
+            <h3>Kampanie reklamowe</h3>
+            <p>Projektowanie i realizacja kampanii reklamowych w mediach społecznościowych, Google Ads i innych platformach.</p>
+        </div>
+        <div class="service-item">
+            <h3>Projektowanie stron www</h3>
+            <p>Projektowanie wizualizacji nowoczesnych, wygodnych i funkcjonalnych stron internetowych.</p>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="IMG_7421_1.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="IMG_7414_1.jpg" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Zdjęcia dla social media</h4>
+        </div>
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="nowa reklama mp4 5.mp4" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="kuba3 (3).mp4" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Kampanie reklamowe</h4>
+        </div>
+        <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: center;">
+                <img src="bol_mozgu.jpg" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
+                <img src="cosmopolitan.JPEG" alt="Работа 2" style="max-width: 45%; height: auto;">
+            </div>
+            <h4 style="text-align: center;">Projekty graficzne</h4>
+        </div>
+    </section>
 
     <section id="contact">
         <h2>Kontakt</h2>
@@ -25,6 +124,7 @@
             <button type="submit">Wysłać</button>
         </form>
 
+        <!-- Выплывающее окно -->
         <div id="popup" class="popup">
             <div class="popup-content">
                 <span id="closePopup" class="close">&times;</span>
@@ -33,6 +133,7 @@
         </div>
 
         <a href="https://www.instagram.com/slad.pl?igsh=MWxmenBoNDNzOW45eQ==" class="button-link" target="_blank">Odwiedź mój Instagram</a>
+        
     </section>
 
     <footer>
