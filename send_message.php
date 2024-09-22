@@ -20,13 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     if ($httpCode == 200) {
-        echo "<script>document.addEventListener('DOMContentLoaded', function() { document.getElementById('popup').style.display = 'flex'; });</script>";
+        echo "success";
     } else {
-        echo "<script>document.addEventListener('DOMContentLoaded', function() { alert('Błąd wysyłania wiadomości.'); });</script>";
+        echo "error";
     }
     
     curl_close($ch);
-} else {
-    echo "<script>document.addEventListener('DOMContentLoaded', function() { alert('Nieobsługiwana metoda żądania.'); });</script>";
 }
 ?>
