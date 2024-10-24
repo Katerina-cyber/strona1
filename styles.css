@@ -31,7 +31,7 @@ body, html {
 }
 
 body {
-    background-image: url('https://drive.google.com/uc?id=1GOTlkk3fcs41a0IS3776IqnVjkGWJSEO');
+    background: none;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@ nav ul li a:hover {
 
 /* Секция Hero */
 #hero {
-    background: url('https://drive.google.com/uc?id=1GOTlkk3fcs41a0IS3776IqnVjkGWJSEO') no-repeat center center/cover;
+    background:  url('IMG_5029_12.jpg');
     height: 100vh;
     display: flex;
     flex-direction: column;
