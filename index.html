@@ -24,21 +24,65 @@
             background-color: #fff;
             margin: 15% auto;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             width: 80%;
             max-width: 500px;
+            text-align: center;
+            position: relative;
         }
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
         }
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
+        }
+
+        /* Стили для формы */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        button[type="submit"]:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -95,8 +139,8 @@
         </div>
         <div class="portfolio-item" style="display: flex; flex-direction: column; align-items: center;">
             <div style="display: flex; justify-content: center;">
-                <img src="nowa reklama mp4 5.mp4" alt="Работа 1" style="max-width: 45%; height: auto; margin-right: 10px;">
-                <img src="kuba3 (3).mp4" alt="Работа 2" style="max-width: 45%; height: auto;">
+                <video src="nowa reklama mp4 5.mp4" controls style="max-width: 45%; height: auto; margin-right: 10px;"></video>
+                <video src="kuba3 (3).mp4" controls style="max-width: 45%; height: auto;"></video>
             </div>
             <h4 style="text-align: center;">Kampanie reklamowe</h4>
         </div>
@@ -110,103 +154,41 @@
     </section>
 
     <section id="contact">
-    <h2>Kontakt</h2>
-    <form id="contactForm">
-        <div class="form-group">
-            <label for="name">Imię:</label>
-            <input type="text" id="name" name="name" required minlength="2">
-        </div>
+        <h2>Kontakt</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" name="name" required minlength="2">
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <div class="form-group">
-            <label for="message">Wiadomość:</label>
-            <textarea id="message" name="message" required minlength="10"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="message">Wiadomość:</label>
+                <textarea id="message" name="message" required minlength="10"></textarea>
+            </div>
 
-        <button type="submit">Wysłać</button>
-    </form>
+            <button type="submit">Wysłać</button>
+        </form>
 
-    <!-- Всплывающее окно -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <p>Dziękuję za Twoją wiadomość! 🙂</p>
+        <!-- Всплывающее окно -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span id="closePopup" class="close">&times;</span>
+                <p>Dziękuję za Twoją wiadomość! 🙂</p>
+            </div>
         </div>
-    </div>
 
         <a href="https://www.instagram.com/slad.pl?igsh=MWxmenBoNDNzOW45eQ==" class="button-link" target="_blank">Odwiedź mój Instagram</a>
-        
     </section>
 
     <footer>
         <p>© 2024 Grafik i specjalista ds. reklamy. Wszelkie prawa zastrzeżone. Katerina Semenczuk NIP: 1133127510</p>
     </footer>
 
-<script src="script.js"></script>
-</body>
-</html>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Плавная прокрутка к якорям
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Обработка отправки формы
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const submitButton = this.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Wysyłanie...';
-
-                fetch('send_message.php', {
-                    method: 'POST',
-                    body: new FormData(this)
-                })
-                .then(response => response.text())
-                .then(data => {
-                    if (data === 'success') {
-                        document.getElementById('popup').style.display = 'block';
-                        this.reset();
-                    } else {
-                        alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Błąd:', error);
-                    alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Wysłać';
-                });
-            });
-
-            // Закрытие popup при нажатии на крестик
-            document.getElementById('closePopup').addEventListener('click', function() {
-                document.getElementById('popup').style.display = 'none';
-            });
-
-            // Закрытие popup при клике вне его области
-            window.addEventListener('click', function(event) {
-                if (event.target === document.getElementById('popup')) {
-                    document.getElementById('popup').style.display = 'none';
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
