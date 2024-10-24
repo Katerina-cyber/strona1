@@ -5,7 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const BOT_TOKEN = '7433898172:AAERsXGF1b_anBbRn1hAof31MEq-DvBgj04';
     const CHAT_ID = '708285715';
 
-    // Плавная прокрутка к якорям
+    // Проверяем, найдены ли все необходимые элементы
+    if (!form || !popup || !closePopup) {
+        console.error('Не все элементы найдены на странице');
+        return;
+    }
+
+    // Плавная прокрутка
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -21,17 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Обработка отправки формы
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+        console.log('Форма отправляется...'); // Для отладки
 
-        const submitButton = this.querySelector('button[type="submit"]');
+        const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Wysyłanie...';
 
-        const formData = new FormData(this);
+        const formData = new FormData(form);
         const message = `🌟 Nowa wiadomość ze strony portfolio!\n\n` +
                        `👤 Imię: ${formData.get('name')}\n` +
                        `📧 Email: ${formData.get('email')}\n` +
                        `💬 Wiadomość:\n${formData.get('message')}\n\n` +
                        `📅 Data: ${new Date().toLocaleString('pl-PL')}`;
+
+        console.log('Подготовленное сообщение:', message); // Для отладки
 
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
@@ -40,11 +49,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify({
                 chat_id: CHAT_ID,
-                text: message
+                text: message,
+                parse_mode: 'HTML'
             })
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Ответ сервера:', response); // Для отладки
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('Данные от сервера:', data); // Для отладки
             if (data.ok) {
                 form.reset();
                 popup.style.display = 'block';
@@ -54,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     popup.style.display = 'none';
                 }, 5000);
             } else {
-                throw new Error('Błąd wysyłania wiadomości do Telegram');
+                throw new Error('Ошибка отправки сообщения в Telegram');
             }
         })
         .catch(error => {
-            console.error('Błąd:', error);
+            console.error('Ошибка:', error);
             alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
         })
         .finally(() => {
@@ -67,20 +84,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Закрытие popup при нажатии на крестик
+    // Закрытие popup при клике на крестик
     closePopup.addEventListener('click', function () {
         popup.style.display = 'none';
     });
 
-    // Закрытие popup при клике вне его области
+    // Закрытие popup при клике вне окна
     window.addEventListener('click', function (event) {
         if (event.target === popup) {
             popup.style.display = 'none';
         }
     });
-});
 
-    closePopup.addEventListener('click', function () {
-        popup.style.display = 'none';
-    });
+    // Для отладки - проверяем, что скрипт загрузился
+    console.log('Скрипт успешно загружен');
 });
