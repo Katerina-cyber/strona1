@@ -5,31 +5,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const BOT_TOKEN = '7433898172:AAERsXGF1b_anBbRn1hAof31MEq-DvBgj04';
     const CHAT_ID = '708285715';
 
-    if (!form || !popup || !closePopup) {
-        console.error('Nie wszystkie wymagane elementy zostały znalezione na stronie');
-        return;
-    }
-
-    // Сохраняем функциональность плавной прокрутки
+    // Плавная прокрутка к якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetElement = document.querySelector(this.getAttribute('href'));
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
         });
     });
 
+    // Обработка отправки формы
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const submitButton = form.querySelector('button[type="submit"]');
+
+        const submitButton = this.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Wysyłanie...';
-        console.log('Wysyłanie formularza...');
 
-        const formData = new FormData(form);
-        const message = `Imię: ${formData.get('name')}\nEmail: ${formData.get('email')}\nWiadomość: ${formData.get('message')}`;
+        const formData = new FormData(this);
+        const message = `🌟 Nowa wiadomość ze strony portfolio!\n\n` +
+                       `👤 Imię: ${formData.get('name')}\n` +
+                       `📧 Email: ${formData.get('email')}\n` +
+                       `💬 Wiadomość:\n${formData.get('message')}\n\n` +
+                       `📅 Data: ${new Date().toLocaleString('pl-PL')}`;
 
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
             method: 'POST',
@@ -38,35 +40,45 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify({
                 chat_id: CHAT_ID,
-                text: message,
-            }),
+                text: message
+            })
         })
-        .then(response => {
-            console.log('Odpowiedź serwera:', response);
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Błąd serwera: ' + response.status);
-            }
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log('Dane z serwera:', data);
             if (data.ok) {
                 form.reset();
-                popup.style.display = 'flex';
+                popup.style.display = 'block';
+                
+                // Автоматически скрываем popup через 5 секунд
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 5000);
             } else {
                 throw new Error('Błąd wysyłania wiadomości do Telegram');
             }
         })
         .catch(error => {
             console.error('Błąd:', error);
-            alert('Błąd podczas wysyłania formularza. Spróbuj ponownie.');
+            alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
         })
         .finally(() => {
             submitButton.disabled = false;
-            submitButton.textContent = 'Wyślij';
+            submitButton.textContent = 'Wysłać';
         });
     });
+
+    // Закрытие popup при нажатии на крестик
+    closePopup.addEventListener('click', function () {
+        popup.style.display = 'none';
+    });
+
+    // Закрытие popup при клике вне его области
+    window.addEventListener('click', function (event) {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
 
     closePopup.addEventListener('click', function () {
         popup.style.display = 'none';
