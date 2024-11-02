@@ -1,24 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Код для скрытия/показа шапки при прокрутке
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    const scrollThreshold = 50;
+    let prevScrollpos = window.pageYOffset;
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+    window.onscroll = function() {
+        let currentScrollPos = window.pageYOffset;
         
-        if (Math.abs(currentScroll - lastScroll) < scrollThreshold) return;
-
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('header-hidden');
+        if (prevScrollpos > currentScrollPos || currentScrollPos < 50) {
+            document.querySelector('header').style.top = "0";
         } else {
-            header.classList.remove('header-hidden');
+            document.querySelector('header').style.top = "-100px";
         }
+        prevScrollpos = currentScrollPos;
+    }
 
-        lastScroll = currentScroll;
-    }, { passive: true });
-
-    // Основной код формы и других функций
     const form = document.getElementById('contactForm');
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
@@ -41,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработка формы
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        console.log('Форма отправляется...'); // Для отладки
 
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
@@ -65,15 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 parse_mode: 'HTML'
             })
         })
-        .then(response => {
-            console.log('Ответ сервера:', response);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log('Данные от сервера:', data);
             if (data.ok) {
                 form.reset();
                 popup.style.display = 'block';
@@ -99,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         popup.style.display = 'none';
     });
 
-    // Закрытие popup при клике вне окна
+    // Закрытие при клике вне окна
     window.addEventListener('click', function(event) {
         if (event.target === popup) {
             popup.style.display = 'none';
