@@ -35,14 +35,11 @@ body, html {
 header {
     background: #333;
     color: #fff;
-    padding: 15px 0;
+    padding: 10px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transform: translateY(0);
-    transition: transform 0.3s ease-in-out;
-    will-change: transform;
 }
 
 nav ul {
@@ -323,24 +320,28 @@ footer {
     width: 100%;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
+    header {
+        padding: 5px 0;
+    }
+    
     nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 10px 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        padding: 5px 10px;
     }
     
     nav ul li {
         text-align: center;
-        width: 100%;
     }
     
     nav ul li a {
         display: block;
-        padding: 8px 0;
-        font-size: 18px;
+        padding: 5px 0;
+        font-size: 16px;
+        white-space: nowrap;
     }
     
     #hero h1 {
@@ -365,5 +366,16 @@ footer {
     
     .form-group {
         padding: 0 10px;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 320px) {
+    nav ul {
+        gap: 3px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
     }
 }
