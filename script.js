@@ -1,17 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let prevScrollpos = window.pageYOffset;
+    // Код для скрытия/показа шапки
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const delta = 5;
+    const headerHeight = header.offsetHeight;
 
-    window.onscroll = function() {
-        let currentScrollPos = window.pageYOffset;
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (prevScrollpos > currentScrollPos || currentScrollPos < 50) {
-            document.querySelector('header').style.top = "0";
-        } else {
-            document.querySelector('header').style.top = "-100px";
+        // Убедимся, что скролл больше дельты
+        if (Math.abs(lastScrollTop - currentScroll) <= delta) {
+            return;
         }
-        prevScrollpos = currentScrollPos;
-    }
 
+        // Если скроллим вниз и уже проскроллили больше высоты шапки
+        if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+            // Скроллим вниз
+            header.style.transform = `translateY(-${headerHeight}px)`;
+        } else {
+            // Скроллим вверх
+            header.style.transform = 'translateY(0)';
+        }
+
+        lastScrollTop = currentScroll;
+    }, { passive: true });
+
+    // Основной код формы и других функций
     const form = document.getElementById('contactForm');
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
