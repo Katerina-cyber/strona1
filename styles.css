@@ -1,13 +1,4 @@
-/* Универсальный стиль для шрифта Jost */
-.jost-hero {
-    font-family: "Jost", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.jost-body {
-    font-family: "Jost", sans-serif;
+y: "Jost", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -33,18 +24,14 @@ body, html {
 
 /* Обновленные стили для шапки */
 header {
-    background: #333; /* Убрали прозрачность */
+    background: #333;
     color: #fff;
     padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-}
-
-.header-hidden {
-    transform: translateY(-100%);
+    transition: top 0.3s;
 }
 
 nav ul {
