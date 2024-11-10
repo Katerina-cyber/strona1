@@ -34,7 +34,7 @@ body, html {
 
 /* Обновленные стили для шапки */
 header {
-    background: 'COFFEE.png';
+    background-image: url('COFFEE.png');
     color: #4A5568;
     padding: 5px 0;
     position: fixed;
