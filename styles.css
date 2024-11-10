@@ -36,7 +36,7 @@ body, html {
 header {
     background: linear-gradient(135deg, #FFE5E5 0%, #FFB4B4 100%);
     color: #4A5568;
-    padding: 10px 0;
+    padding: 5px 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -45,18 +45,25 @@ header {
 }
 
 nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding: 5px 10px;
     list-style: none;
-    padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+}
+
+nav ul li {
+    text-align: center;
 }
 
 nav ul li a {
     color: #4A5568;
     text-decoration: none;
     font-weight: 500;
+    display: block;
+    padding: 5px 0;
+    font-size: 16px;
     transition: color 0.3s ease;
 }
 
@@ -113,13 +120,55 @@ nav ul li a:hover {
     text-shadow: 1px 1px 2px rgba(255, 180, 180, 0.2);
 }
 
+/* Обновленные стили для портфолио */
+.portfolio-section {
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.portfolio-grid img,
+.portfolio-grid video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(255, 180, 180, 0.2);
+}
+
+.portfolio-grid img:hover,
+.portfolio-grid video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(255, 180, 180, 0.3);
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.portfolio-item h4 {
+    margin-top: 15px;
+    font-size: 1.2em;
+    color: #4A5568;
+    text-align: center;
+}
+
 /* Контентные секции */
 .content-section {
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
     background: rgba(255, 255, 255, 0.95);
     margin: 20px auto;
-    max-width: 1200px;
+    max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(255, 180, 180, 0.1);
 }
@@ -171,6 +220,39 @@ button[type="submit"]:disabled {
 }
 
 /* Форма */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4A5568;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #FFE5E5;
+    border-radius: 5px;
+    font-family: "Jost", sans-serif;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
@@ -178,10 +260,66 @@ button[type="submit"]:disabled {
     box-shadow: 0 0 5px rgba(255, 180, 180, 0.3);
 }
 
+/* Всплывающее окно */
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 180, 180, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.popup-content {
+    background: #FFF;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 15% auto;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 180, 180, 0.3);
+    animation: popup-appear 0.3s ease-out;
+}
+
+@keyframes popup-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #FFB4B4;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #FF8B8B;
+}
+
 /* Instagram кнопка */
 .button-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
     background: linear-gradient(45deg, #FFE5E5, #FFB4B4, #FF8B8B);
     color: #4A5568;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
@@ -199,4 +337,45 @@ footer {
     width: 100%;
 }
 
-/* Остальные медиа-запросы остаются без изменений */
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        max-width: 100%;
+    }
+
+    .portfolio-grid img,
+    .portfolio-grid video {
+        height: 200px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    #hero h1 {
+        font-size: 2em;
+        padding: 0 20px;
+    }
+    
+    #hero p {
+        font-size: 1.2em;
+        padding: 0 20px;
+    }
+    
+    .content-section {
+        padding: 40px 15px;
+        margin: 10px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid img,
+    .portfolio-grid video {
+        height: 250px;
+    }
+}
