@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
-    const BOT_TOKEN = '7433898172:AAERsXGF1b_anBbRn1hAof31MEq-DvBgj04';
+    const BOT_TOKEN = '7433898172:AAERsX6F1b_anBbRn1hAof3lMEq-DvBgj04';
     const CHAT_ID = '708285715';
 
     // Плавная прокрутка
