@@ -121,16 +121,11 @@ nav ul li a:hover {
 }
 
 /* Обновленные стили для портфолио */
-.portfolio-section {
-    padding: 60px 20px;
-    background: rgba(255, 255, 255, 0.9);
-}
-
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -138,7 +133,8 @@ nav ul li a:hover {
 .portfolio-grid img,
 .portfolio-grid video {
     width: 100%;
-    height: 300px;
+    height: auto;
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -168,7 +164,7 @@ nav ul li a:hover {
     text-align: center;
     background: rgba(255, 255, 255, 0.95);
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 1200px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(255, 180, 180, 0.1);
 }
@@ -310,22 +306,21 @@ form {
     color: #FF8B8B;
 }
 
-/* Instagram кнопка */
+/* Instagram кнопка - вернули оригинальный градиент */
 .button-link {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 25px;
-    background: linear-gradient(45deg, #FFE5E5, #FFB4B4, #FF8B8B);
-    color: #4A5568;
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: white;
     text-decoration: none;
     border-radius: 5px;
     transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .button-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 180, 180, 0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Футер */
@@ -340,14 +335,10 @@ footer {
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
     .portfolio-grid {
-        max-width: 100%;
+        gap: 15px;
+        padding: 0 10px;
     }
 
-    .portfolio-grid img,
-    .portfolio-grid video {
-        height: 200px;
-    }
-    
     nav ul li a {
         font-size: 14px;
     }
@@ -372,10 +363,5 @@ footer {
 @media (max-width: 480px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
-    }
-
-    .portfolio-grid img,
-    .portfolio-grid video {
-        height: 250px;
     }
 }
