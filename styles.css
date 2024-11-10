@@ -124,8 +124,8 @@ nav ul li a:hover {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 1200px;
+    gap: 30px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -133,12 +133,15 @@ nav ul li a:hover {
 .portfolio-grid img,
 .portfolio-grid video {
     width: 100%;
+    max-width: 350px;
     height: auto;
     aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(255, 180, 180, 0.2);
+    margin: 0 auto;
+    display: block;
 }
 
 .portfolio-grid img:hover,
@@ -148,6 +151,9 @@ nav ul li a:hover {
 }
 
 .portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 30px;
 }
 
@@ -341,7 +347,7 @@ footer {
 
     .portfolio-grid img,
     .portfolio-grid video {
-        aspect-ratio: 4/5;
+        max-width: 280px;
     }
     
     nav ul li a {
@@ -368,5 +374,10 @@ footer {
 @media (max-width: 480px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid img,
+    .portfolio-grid video {
+        max-width: 250px;
     }
 }
