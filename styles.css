@@ -134,7 +134,7 @@ nav ul li a:hover {
 .portfolio-grid video {
     width: 100%;
     height: auto;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -306,7 +306,7 @@ form {
     color: #FF8B8B;
 }
 
-/* Instagram кнопка - вернули оригинальный градиент */
+/* Instagram кнопка */
 .button-link {
     display: inline-block;
     margin-top: 20px;
@@ -339,6 +339,11 @@ footer {
         padding: 0 10px;
     }
 
+    .portfolio-grid img,
+    .portfolio-grid video {
+        aspect-ratio: 4/5;
+    }
+    
     nav ul li a {
         font-size: 14px;
     }
