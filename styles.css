@@ -29,8 +29,7 @@ body, html {
     line-height: 1.6;
     color: #4A5568;
     overflow-x: hidden;
-    background: url('COFFEE.png') no-repeat center center fixed;
-    background-size: cover;
+    background: #FFF5F5;  /* Возвращаем розовый фон */
 }
 
 /* Обновленные стили для шапки */
@@ -85,7 +84,8 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     color: #4A5568;
-    background: linear-gradient(135deg, #FFE5E5 0%, #FFB4B4 100%);
+    background: url('COFFEE.png') no-repeat center center; /* Здесь добавляем картинку */
+    background-size: cover;
 }
 
 #hero::before {
@@ -95,7 +95,7 @@ nav ul li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 245, 245, 0.8); /* Добавляем полупрозрачный розовый оверлей */
     z-index: 1;
 }
 
