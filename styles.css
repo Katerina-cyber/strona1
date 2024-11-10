@@ -29,7 +29,8 @@ body, html {
     line-height: 1.6;
     color: #4A5568;
     overflow-x: hidden;
-    background: #FFF5F5;
+    background: url('COFFEE.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Обновленные стили для шапки */
