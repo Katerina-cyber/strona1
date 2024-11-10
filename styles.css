@@ -34,7 +34,7 @@ body, html {
 
 /* Обновленные стили для шапки */
 header {
-    background-image: url('COFFEE.png');
+    background: linear-gradient(135deg, #FFE5E5 0%, #FFB4B4 100%);
     color: #4A5568;
     padding: 5px 0;
     position: fixed;
