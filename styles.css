@@ -84,7 +84,7 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     color: #4A5568;
-    background: url('COFFEE.png') no-repeat center center; /* Здесь добавляем картинку */
+    background: url('mini.png') no-repeat center center; /* Здесь добавляем картинку */
     background-size: cover;
 }
 
