@@ -2,3 +2,5 @@ git lfs install
 git lfs track "*.MP4"
 git add dorota.mp4
 git commit -m "Добавление большого файла"
+git push origin main
+git lfs ls-files
